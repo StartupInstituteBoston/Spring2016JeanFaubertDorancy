@@ -1,4 +1,14 @@
 <%= form_for @restaurant do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <%= pluralize(@restaurant.errors.count, "error") %>
+      <ul>
+        <% @restaurant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>  
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= f.label :restaurant_name %>
   <%= f.text_field :name %>
   <br/>

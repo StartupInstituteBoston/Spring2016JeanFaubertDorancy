@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
-  full_address: MyString
-  phone_number: MyString
+  name: test restaurant 1
+  description: some text 1
+  full_address: 27 dudley st, medford MA
+  phone_number: 8888888888
 
 two:
-  name: MyString
-  description: MyText
-  full_address: MyString
-  phone_number: MyString
+  name: test restaurant 2
+  description: some text 2
+  full_address: 27 milk st, boston MA
+  phone_number: 8888888888
