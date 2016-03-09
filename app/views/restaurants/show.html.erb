@@ -4,9 +4,11 @@ Name: <%= @restaurant.name %>
 <br/>
 Description: <%= @restaurant.description %>
 <br/>
+Phone number: <%= @restaurant.phone_number %>
+<br/>
 Address: <%= @restaurant.full_address %>
 <br/>
-Phone number: <%= @restaurant.phone_number %>
+<%= image_tag @restaurant.map_url %>
 <br/>
 <%= link_to "Restaurant directory", restaurants_path %>
 <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
