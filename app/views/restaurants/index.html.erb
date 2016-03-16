@@ -1,5 +1,7 @@
 <h1>Restaurant Directory</h1>
-<%= link_to "Add a new restaurant", new_restaurant_path %>
+<% if owner_signed_in? %>
+  <%= link_to "Add a new restaurant", new_restaurant_path %>
+<% end %>
 <br/>
 <table>
   <thead>

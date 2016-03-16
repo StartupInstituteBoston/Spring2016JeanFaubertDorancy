@@ -1,4 +1,5 @@
 class Restaurant < ActiveRecord::Base
+  belongs_to :owner
   attr_accessor :map_url
   validates :name, :description, :full_address, :phone_number, presence: true
   

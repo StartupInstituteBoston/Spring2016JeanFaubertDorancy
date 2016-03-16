@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root 'restaurants#index'
   resources :restaurants
+  devise_for :owners, controllers: {
+    registrations: 'owners/registrations'
+  }
+  devise_scope :owner do 
+    get    'login'  => 'devise/sessions#new'
+    delete 'logout' => 'devise/sessions#destroy'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

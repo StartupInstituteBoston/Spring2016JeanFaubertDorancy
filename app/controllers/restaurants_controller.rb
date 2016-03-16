@@ -1,4 +1,7 @@
 class RestaurantsController < ApplicationController
+  before_action :set_restaurant, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_owner!, only: [:index, :show]
+  
   def index
     @restaurants = Restaurant.all
   end
@@ -8,11 +11,11 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @restaurant = Restaurant.new
+    @restaurant = current_owner.restaurants.build
   end
   
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = current_owner.restaurants.build(restaurant_params)
     if @restaurant.save
       redirect_to @restaurant
     else
@@ -21,11 +24,9 @@ class RestaurantsController < ApplicationController
   end
   
   def edit
-    @restaurant = Restaurant.find(params[:id])
   end
   
   def update
-    @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
       redirect_to @restaurant
     else
@@ -34,12 +35,16 @@ class RestaurantsController < ApplicationController
   end
   
   def destroy
-    Restaurant.find(params[:id]).delete
+    @restaurant.delete
     redirect_to root_url
   end
   
   private
     def restaurant_params
       params.required(:restaurant).permit(:name, :description, :full_address, :phone_number)
+    end
+    
+    def set_restaurant
+      @restaurant = current_owner.restaurants.find(params[:id])
     end
 end
