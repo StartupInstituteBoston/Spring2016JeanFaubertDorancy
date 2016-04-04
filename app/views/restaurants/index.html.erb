@@ -1,19 +1,20 @@
-<h1>Restaurant Directory</h1>
+<% provide(:title, "Directory") %>
+<h1 class="jumbotron">Restaurant Directory</h1>
 <% if user_signed_in? %>
-  <%= link_to "Add a new restaurant", new_restaurant_path %>
+  <%= link_to "Add a new restaurant", new_restaurant_path, class: "btn btn-primary" %>
 <% end %>
-<br/>
-<table>
+<br/><br/>
+<table class="table">
   <thead>
-    <td>Name</td>
-    <td>Description</td>
-    <td>Phone number</td>
+    <th>Name</th>
+    <th>Phone number</th>
+    <th>Description</th>
   </thead>
   <% @restaurants.each do |resto| %>
     <tr>
       <td><%= link_to(resto.name, restaurant_path(resto)) %></td>
-      <td><%= resto.description %></td>
       <td><%= resto.phone_number %></td>
+      <td><%= resto.description %></td>
     </tr>
   <% end %>
 </table>

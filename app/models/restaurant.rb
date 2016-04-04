@@ -5,7 +5,7 @@ class Restaurant < ActiveRecord::Base
   
   def map_url
     url = "https://maps.googleapis.com/maps/api/staticmap"
-    url += "?center=#{full_address}&zoom=18&size=400x400"
+    url += "?center=#{full_address}&zoom=18&size=500x500"
     url += "&markers=color:red%7C#{full_address}&key=#{ENV['GOOGLE_MAPS']}"
   end
 end

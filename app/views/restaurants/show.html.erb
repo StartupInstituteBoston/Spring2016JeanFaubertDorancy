@@ -1,20 +1,23 @@
-<h1>Restaurant - <%= @restaurant.name %></h1>
-<h2>Owner's name - <%= @restaurant.owner.name %> </h2>
-<br/>
-Name: <%= @restaurant.name %>
-<br/>
-Description: <%= @restaurant.description %>
-<br/>
-Phone number: <%= @restaurant.phone_number %>
-<br/>
-Address: <%= @restaurant.full_address %>
-<br/>
-<%= image_tag @restaurant.map_url %>
-<br/>
- <%= link_to "Restaurant directory", restaurants_path %>
-<% if @restaurant.owner == current_user %>
-  <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
-  <%= link_to "Delete", restaurant_path(@restaurant),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?'} %>
-<% end %>
+<% provide(:title, @restaurant.name) %>
+<div class="col-md-6">
+	<%= image_tag @restaurant.map_url %>
+</div>
+<div class="col-md-6">
+	<div class="jumbotron">
+	<span class="restaurant-name"><%= @restaurant.name %></span>
+	<h2>Owner's name - <%= @restaurant.owner.name %> </h2>
+	<h3><strong>Phone number:</strong> <%= @restaurant.phone_number %></h3>
+	<h3><strong>Address:</strong> <%= @restaurant.full_address %></h3>
+	<h3><strong>Description:</strong> </h3><p><%= @restaurant.description %></p>
+	</div>
+</div> 
+<div class="col-md-6">
+	<%= link_to "Back to Directory", restaurants_path, class: "btn btn-primary" %>
+	<% if @restaurant.owner == current_user %>
+	  <%= link_to "Edit", edit_restaurant_path(@restaurant), class: "btn btn-primary" %>
+	  <%= link_to "Delete", restaurant_path(@restaurant),
+	                        method: :delete,
+	                        data: { confirm: 'Are you sure?'},
+	                        class: "btn btn-danger" %>
+	<% end %>
+</div>

@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reservester</title>
+  <title>Reservester - <%= yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header>
-  <% if user_signed_in? %>
-    <%= current_user.name %> |
-    <%= link_to "Logout", logout_path, method: :delete %>
-  <% else %>
-    <%= link_to "Login", login_path %>
-  <% end %>
-</header>
-<%= yield %>
-
+<%= render 'layouts/header' %>
+<div class="container">
+  <%= yield %>
+</div>
+<%= render 'layouts/footer' %>
 </body>
 </html>
