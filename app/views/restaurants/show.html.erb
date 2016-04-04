@@ -11,8 +11,8 @@ Address: <%= @restaurant.full_address %>
 <br/>
 <%= image_tag @restaurant.map_url %>
 <br/>
-<% if owner_signed_in? %>
-  <%= link_to "Restaurant directory", restaurants_path %>
+ <%= link_to "Restaurant directory", restaurants_path %>
+<% if @restaurant.owner == current_user %>
   <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
   <%= link_to "Delete", restaurant_path(@restaurant),
                         method: :delete,

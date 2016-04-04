@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   root 'restaurants#index'
   resources :restaurants
-  devise_for :owners, controllers: {
-    registrations: 'owners/registrations'
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
   }
-  devise_scope :owner do 
+  devise_scope :user do 
     get    'login'  => 'devise/sessions#new'
     delete 'logout' => 'devise/sessions#destroy'
   end

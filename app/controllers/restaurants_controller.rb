@@ -11,11 +11,11 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @restaurant = current_owner.restaurants.build
+    @restaurant = current_user.restaurants.build
   end
   
   def create
-    @restaurant = current_owner.restaurants.build(restaurant_params)
+    @restaurant = current_user.restaurants.build(restaurant_params)
     if @restaurant.save
       redirect_to @restaurant
     else
@@ -45,6 +45,6 @@ class RestaurantsController < ApplicationController
     end
     
     def set_restaurant
-      @restaurant = current_owner.restaurants.find(params[:id])
+      @restaurant = current_user.restaurants.find(params[:id])
     end
 end

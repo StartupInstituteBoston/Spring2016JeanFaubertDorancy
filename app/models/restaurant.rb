@@ -1,5 +1,5 @@
 class Restaurant < ActiveRecord::Base
-  belongs_to :owner
+  belongs_to :owner, foreign_key: "owner_id", class_name: "User"
   attr_accessor :map_url
   validates :name, :description, :full_address, :phone_number, presence: true
   
