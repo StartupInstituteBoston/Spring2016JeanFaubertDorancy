@@ -1,13 +1,13 @@
 <% provide(:title, @restaurant.name) %>
+<h1><%= @restaurant.name %></h1>
 <div class="col-md-6">
 	<%= image_tag @restaurant.map_url %>
 </div>
 <div class="col-md-6">
 	<div class="jumbotron">
-	<span class="restaurant-name"><%= @restaurant.name %></span>
-	<h2>Owner's name - <%= @restaurant.user.name %> </h2>
+	<h3><strong>Owner:</strong> <%= @restaurant.user.name %></h3>
 	<h3><strong>Phone number:</strong> <%= @restaurant.phone_number %></h3>
-	<h3><strong>Address:</strong> <%= @restaurant.full_address %></h3>
+	<h3><strong>Address:</strong></h3><p><%= @restaurant.full_address %></p>
 	<h3><strong>Description:</strong> </h3><p><%= @restaurant.description %></p>
 	</div>
 </div> 
